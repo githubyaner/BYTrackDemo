@@ -14,6 +14,9 @@
 		7302313F1D87FF5700E9AE22 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7302313D1D87FF5700E9AE22 /* LaunchScreen.storyboard */; };
 		7302314A1D87FF5700E9AE22 /* BYTrackDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 730231491D87FF5700E9AE22 /* BYTrackDemoTests.m */; };
 		730231551D87FF5700E9AE22 /* BYTrackDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 730231541D87FF5700E9AE22 /* BYTrackDemoUITests.m */; };
+		73824C7D1D88E4B500119A32 /* BYMapViewVC.mm in Sources */ = {isa = PBXBuildFile; fileRef = 73824C7C1D88E4B500119A32 /* BYMapViewVC.mm */; };
+		73824C821D88E62B00119A32 /* MAMapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73824C801D88E62B00119A32 /* MAMapKit.framework */; };
+		73824C841D88E64C00119A32 /* AMap.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = 73824C831D88E64C00119A32 /* AMap.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +51,10 @@
 		730231501D87FF5700E9AE22 /* BYTrackDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BYTrackDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		730231541D87FF5700E9AE22 /* BYTrackDemoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BYTrackDemoUITests.m; sourceTree = "<group>"; };
 		730231561D87FF5700E9AE22 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		73824C7B1D88E4B500119A32 /* BYMapViewVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BYMapViewVC.h; sourceTree = "<group>"; };
+		73824C7C1D88E4B500119A32 /* BYMapViewVC.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = BYMapViewVC.mm; sourceTree = "<group>"; };
+		73824C801D88E62B00119A32 /* MAMapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MAMapKit.framework; sourceTree = "<group>"; };
+		73824C831D88E64C00119A32 /* AMap.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = AMap.bundle; path = MAMapKit.framework/Versions/3.1.0.56231a5/Resources/AMap.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +62,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				73824C841D88E64C00119A32 /* AMap.bundle in Frameworks */,
+				73824C821D88E62B00119A32 /* MAMapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,6 +109,9 @@
 			children = (
 				730231351D87FF5700E9AE22 /* AppDelegate.h */,
 				730231361D87FF5700E9AE22 /* AppDelegate.m */,
+				73824C7B1D88E4B500119A32 /* BYMapViewVC.h */,
+				73824C7C1D88E4B500119A32 /* BYMapViewVC.mm */,
+				73824C7E1D88E62B00119A32 /* MAMapKit */,
 				7302313B1D87FF5700E9AE22 /* Assets.xcassets */,
 				7302313D1D87FF5700E9AE22 /* LaunchScreen.storyboard */,
 				730231401D87FF5700E9AE22 /* Info.plist */,
@@ -133,6 +145,15 @@
 				730231561D87FF5700E9AE22 /* Info.plist */,
 			);
 			path = BYTrackDemoUITests;
+			sourceTree = "<group>";
+		};
+		73824C7E1D88E62B00119A32 /* MAMapKit */ = {
+			isa = PBXGroup;
+			children = (
+				73824C831D88E64C00119A32 /* AMap.bundle */,
+				73824C801D88E62B00119A32 /* MAMapKit.framework */,
+			);
+			path = MAMapKit;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -265,6 +286,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				730231371D87FF5700E9AE22 /* AppDelegate.m in Sources */,
+				73824C7D1D88E4B500119A32 /* BYMapViewVC.mm in Sources */,
 				7302313A1D87FF5700E9AE22 /* BYTrackDemo.xcdatamodeld in Sources */,
 				730231341D87FF5700E9AE22 /* main.m in Sources */,
 			);
@@ -401,6 +423,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/BYTrackDemo/MAMapKit",
+				);
 				INFOPLIST_FILE = BYTrackDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.berton.BYTrackDemo;
@@ -412,6 +438,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/BYTrackDemo/MAMapKit",
+				);
 				INFOPLIST_FILE = BYTrackDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.berton.BYTrackDemo;
@@ -484,6 +514,7 @@
 				7302315B1D87FF5700E9AE22 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7302315C1D87FF5700E9AE22 /* Build configuration list for PBXNativeTarget "BYTrackDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -492,6 +523,7 @@
 				7302315E1D87FF5700E9AE22 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7302315F1D87FF5700E9AE22 /* Build configuration list for PBXNativeTarget "BYTrackDemoUITests" */ = {
 			isa = XCConfigurationList;
@@ -500,6 +532,7 @@
 				730231611D87FF5700E9AE22 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

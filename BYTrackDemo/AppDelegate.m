@@ -7,6 +7,9 @@
 //
 
 #import "AppDelegate.h"
+#import <MAMapKit/MAMapKit.h>
+
+static NSString *GDAPIKey = @"输入您的GDAPIKey";
 
 @interface AppDelegate ()
 
@@ -18,9 +21,15 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
+    [self configureAPIKey];
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;
+}
+
+//高德地图SDK
+- (void)configureAPIKey {
+    [MAMapServices sharedServices].apiKey = (NSString *)GDAPIKey;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
