@@ -95,7 +95,16 @@
 
 //添加一个大头针和物理围栏
 - (void)addPointAndCircleView {
+    MAPointAnnotation *pointAnnotation = [[MAPointAnnotation alloc] init];
+    pointAnnotation.coordinate = CLLocationCoordinate2DMake(39.952136, 116.50095);
+    pointAnnotation.title = @"点我";
+    pointAnnotation.subtitle = @"详情";
     
+    [_mapView addAnnotation:pointAnnotation];
+    
+    MACircle *circle = [MACircle circleWithCenterCoordinate:CLLocationCoordinate2DMake(39.952136, 116.50095) radius:5000];
+    //在地图上添加圆
+    [_mapView addOverlay: circle];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -158,7 +167,7 @@
 //添加大头针
 - (MAAnnotationView *)mapView:(MAMapView *)mapView viewForAnnotation:(id <MAAnnotation>)annotation {
     /*
-     *  当然画轨迹的同时,也可以添加个大头针,设置一个地理围栏,然后可以判断你有没有经过这片区域.
+     *  当然画轨迹的同时,也可以添加个大头针,设置一个地理围栏.
      */
     //大头针标注
     if ([annotation isKindOfClass:[MAPointAnnotation class]]) {
@@ -250,5 +259,18 @@
     self.mapView.delegate = nil;
 }
 
+
+#pragma mark - 判断当前坐标有没有在某个圆内
+#pragma mark - 可将此功能与地理围栏相结合,地理围栏负责展示这片区域,此方法负责进行判断
+/*
+ @brief 判断一个位置是否在某一个位置某个范围内.
+ @param currentCoor 当前位置或者是需要判定的位置
+ @param attractionsCoor 判断的中心点位置
+ @param radius 中心点位置半径,范围
+ */
+- (BOOL)distanceBetweenOfCurrentLocation:(CLLocationCoordinate2D)currentCoor attractionsLocation:(CLLocationCoordinate2D)attractionsCoor andRadius:(NSInteger)radius {
+    BOOL ptInCircle = MACircleContainsCoordinate(currentCoor, attractionsCoor, radius);
+    return ptInCircle;
+}
 
 @end

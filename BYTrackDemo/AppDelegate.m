@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import <MAMapKit/MAMapKit.h>
+#import "BYMapViewVC.h"
 
 static NSString *GDAPIKey = @"输入您的GDAPIKey";
 
@@ -22,6 +23,9 @@ static NSString *GDAPIKey = @"输入您的GDAPIKey";
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     [self configureAPIKey];
+    
+    BYMapViewVC *mapVC = [[BYMapViewVC alloc] init];
+    self.window.rootViewController = mapVC;
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;
