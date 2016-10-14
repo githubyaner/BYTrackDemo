@@ -215,27 +215,12 @@
 
 //绘制旅行路线
 - (void)drawTrackingLine {
-    MAMapPoint northEastPoint = MAMapPointMake(0.f, 0.f);
-    MAMapPoint southWestPoint = MAMapPointMake(0.f, 0.f);
-    MAMapPoint *pointArray = new MAMapPoint[_pointArr.count];
-    for(int idx = 0; idx < _pointArr.count; idx++) {
+    MAMapPoint *pointArray = new MAMapPoint[_pointArr.count];//创建一个结构体数组
+    for(int index = 0; index < _pointArr.count; index++) {
         MAPointAnnotation *locationUser = [[MAPointAnnotation alloc] init];
-        locationUser = [_pointArr objectAtIndex:idx];
+        locationUser = [_pointArr objectAtIndex:index];
         MAMapPoint point = MAMapPointForCoordinate(locationUser.coordinate);
-        if (idx == 0) {
-            northEastPoint = point;
-            southWestPoint = point;
-        } else {
-            if (point.x > northEastPoint.x)
-                northEastPoint.x = point.x;
-            if (point.y > northEastPoint.y)
-                northEastPoint.y = point.y;
-            if (point.x < southWestPoint.x)
-                southWestPoint.x = point.x;
-            if (point.y < southWestPoint.y)
-                southWestPoint.y = point.y;
-        }
-        pointArray[idx] = point;
+        pointArray[index] = point;
     }
     if (self.routeLine) {
         [self.mapView removeOverlay:self.routeLine];
