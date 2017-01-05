@@ -117,7 +117,21 @@
 - (void)mapView:(MAMapView *)mapView didUpdateUserLocation:(MAUserLocation *)userLocation updatingLocation:(BOOL)updatingLocation {
     //updatingLocation 标示是否是location数据更新, YES:location数据更新 NO:heading数据更新
     if (updatingLocation == YES) {
-        self.currentUL = userLocation;//设置当前位置
+//        self.currentUL = userLocation;//设置当前位置
+//        //手机位置信息
+//        [self setPointArrWithCurrentUserLocation];
+        //增加距离判断
+        if (self.currentUL) {
+            CLLocationDistance distance = [userLocation.location distanceFromLocation:self.currentUL.location];
+            //判断当前点与之前点距离相差小于10米就不计入计算.
+            if (distance < 10) {
+                return;
+            } else {
+                self.currentUL = userLocation;//设置当前位置
+            }
+        } else {
+            self.currentUL = userLocation;//设置当前位置
+        }
         //手机位置信息
         [self setPointArrWithCurrentUserLocation];
     }
